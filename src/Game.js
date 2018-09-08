@@ -34,10 +34,20 @@ class Game {
     const posOne = this.getPosition(cellOne);
     const posTwo = this.getPosition(cellTwo);
 
+    const cellOneClone = cellOne.cloneNode();
+    const cellTwoClone = cellTwo.cloneNode();
+
+    cellOneClone.style.top = 0;
+    cellOneClone.style.left = 0;
+    cellTwoClone.style.top = 0;
+    cellTwoClone.style.left = 0;
+
     cellOne.addEventListener('transitionend', once(() => {
       this.isAnimating = false;
-      this.grid.swapCells(posOne, posTwo);     
-      this._render();
+      cellOne.replaceWith(cellTwoClone);
+      cellTwo.replaceWith(cellOneClone);
+      this.grid.swapCells(posOne, posTwo);
+      // this._render();
     }));
   }
 

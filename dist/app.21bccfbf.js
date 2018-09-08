@@ -321,10 +321,20 @@ var Game = function () {
       var posOne = this.getPosition(cellOne);
       var posTwo = this.getPosition(cellTwo);
 
+      var cellOneClone = cellOne.cloneNode();
+      var cellTwoClone = cellTwo.cloneNode();
+
+      cellOneClone.style.top = 0;
+      cellOneClone.style.left = 0;
+      cellTwoClone.style.top = 0;
+      cellTwoClone.style.left = 0;
+
       cellOne.addEventListener('transitionend', (0, _utils.once)(function () {
         _this.isAnimating = false;
+        cellOne.replaceWith(cellTwoClone);
+        cellTwo.replaceWith(cellOneClone);
         _this.grid.swapCells(posOne, posTwo);
-        _this._render();
+        // this._render();
       }));
     }
   }, {
@@ -427,7 +437,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53913' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59320' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
