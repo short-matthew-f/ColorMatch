@@ -1,0 +1,53 @@
+body {
+  background: #acf;
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  
+  width: calc(100vmin - 48px);
+  height: calc(100vmin - 48px);
+  
+
+  background: #222;
+  border-radius: 16px;
+  box-shadow: 0 0 12px -2px black;
+  padding: 12px;
+  margin: 12px auto;
+}
+
+.row {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  flex: 1;
+  position: relative;
+  left: 0;
+  top: 0;
+
+  transition: all 0.3s ease;
+
+  border-radius: 50%;
+}
+
+.cell.selected {
+  box-shadow: 0 0 0 2px inset black;
+}
+
+.cell:hover:not(.selected) {
+  box-shadow: 0 0 0 4px inset gold;
+}
+
+.row:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.cell:not(:last-of-type) {
+  margin-right: 8px;
+}
